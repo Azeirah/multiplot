@@ -3,7 +3,7 @@ from setuptools import setup
 with open('readme.rst', 'r') as f:
     long_description = f.read()
 
-setup(name="multiplot",
+setup(name="mpt-multiplot",
       description="Convenient matplotlib subplot grids",
       long_description=long_description,
       version="0.0.1",
