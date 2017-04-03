@@ -54,8 +54,7 @@ def multiplot(plots, *args, **kwargs):
     """
     chars = {}
     lines = plots.split("\n")
-    if len(lines[0]) < len(lines[1]):
-        lines.pop(0)
+    [line for line in lines if len(line) > 0]
 
     for y, line in enumerate(lines):
         for x, char in enumerate(line):
@@ -64,27 +63,23 @@ def multiplot(plots, *args, **kwargs):
             else:
                 chars[char] = [(x, y), (x, y)]
 
-    plots = {}
-
-    columns = len(lines[0])
-    rows = len(lines)
+    plots    = {}
+    columns  = len(lines[0])
+    rows     = len(lines)
     gridSize = (rows, columns)
-
-    grid = {}
+    grid     = {}
 
     fig = plt.figure(*args, **kwargs)
     for char in chars.keys():
-        points = chars[char]
-        leftTop = points[0]
+        points      = chars[char]
+        leftTop     = points[0]
         bottomRight = points[1]
 
-        width = 1 + bottomRight[0] - leftTop[0]
-        height = 1 + bottomRight[1] - leftTop[1]
+        width       = 1 + bottomRight[0] - leftTop[0]
+        height      = 1 + bottomRight[1] - leftTop[1]
 
         grid[char] = plt.subplot2grid(
             gridSize, [leftTop[1], leftTop[0]], colspan=width, rowspan=height)
-        grid[char].set_title(char +
-            "(w={width}, h={height})".format(height=height, width=width))
 
     return fig, grid
 
