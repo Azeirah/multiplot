@@ -15,12 +15,16 @@ the desired layout of your plot
 
 The simplest grid would look like
 
+
+```
 multiplot('''
 A
 ''')
+```
 
 If you want complicated grid layouts, you can do that as well
 
+```
 multiplot('''
 AA
 AA
@@ -28,21 +32,26 @@ BB
 CC
 CC
 ''')
+```
 
 Or for example this
 
+```
 multiplot('''
 AAABB
 CCCBB
 ''')
 
+```
 Note, make sure that your subfigures have a rectangular shape
 e.g.
 
-'''
+```
+multiplot('''
 AA
 BB
-A'''
+A''')
+```
 
 Won't work.
 
